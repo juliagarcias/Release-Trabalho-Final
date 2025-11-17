@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinControl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-title">
+                <svg class="logo-svg" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 14.5C7 13.1193 8.11929 12 9.5 12H14.5C15.8807 12 17 13.1193 17 14.5V18.5C17 19.8807 15.8807 21 14.5 21H9.5C8.11929 21 7 19.8807 7 18.5V14.5Z" fill="#3BAF9F"/>
+                    <path d="M7 5.5C7 4.11929 8.11929 3 9.5 3H14.5C15.8807 3 17 4.11929 17 5.5V9.5C17 10.8807 15.8807 12 14.5 12H9.5C8.11929 12 7 10.8807 7 9.5V5.5Z" fill="#4DFFF3"/>
+                </svg>
+                <h1>FinControl</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenLogin" class="screen active">
+        <div class="crud-card auth-card">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div>
+                    <label for="loginName">Nome de Usuário (*)</label>
+                    <input type="text" id="loginName" placeholder="Seu nome de usuário" required>
+                </div>
+                <div>
+                    <label for="loginPassword">Senha (*)</label>
+                    <input type="password" id="loginPassword" placeholder="Sua senha" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="save">Entrar</button>
+                </div>
+            </form>
+            <div class="auth-switch">
+                <p>Não tem uma conta? <button id="btnGoToRegister" class="btn-link">Cadastre-se</button></p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenRegister" class="screen">
+        <div class="crud-card auth-card">
+            <h2>Criar Conta</h2>
+            <form id="registerForm">
+                <div>
+                    <label for="registerName">Nome de Usuário (*)</label>
+                    <input type="text" id="registerName" placeholder="Ex: jennifer.lopes" required>
+                </div>
+                 <div>
+                    <label for="registerPassword">Senha (*)</slabel>
+                    <input type="password" id="registerPassword" placeholder="Crie uma senha forte" required>
+                </div>
+                <div>
+                    <label for="registerEmail">E-mail</label>
+                    <input type="email" id="registerEmail" placeholder="Ex: julia@gmail.com">
+                </div>
+                <div>
+                    <label for="registerPhone">Telefone (*)</label>
+                    <input type="tel" id="registerPhone" placeholder="Ex: (XX) XXXXX-XXXX" required>
+                </div>
+                <div>
+                    <label for="registerBirthdate">Data de Nascimento (*)</label>
+                    <input type="date" id="registerBirthdate" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="save">Criar Conta</button>
+                </div>
+            </form>
+            <div class="auth-switch">
+                <p>Já tem uma conta? <button id="btnGoToLogin" class="btn-link">Faça Login</button></p>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="screenHome" class="screen">
+        <div class="crud-card">
+            <h2 id="feedTitle">Últimas Transações</h2>
+            <div id="transactionFeed">
+                </div>
+        </div>
+    </div>
+    
+    <div id="screenMenu" class="screen">
+        <div class="crud-card">
+            <h2>Gerenciamento</h2>
+            <p class="subtitle">Selecione o CRUD que deseja gerenciar.</p>
+            
+            <div class="home-menu">
+                <button id="btnGoToUser_fromMenu" class="home-menu-item">
+                    <span class="home-menu-icon">👤</span>
+                    Meu Perfil
+                </button>
+                <button id="btnGoToCategory_fromMenu" class="home-menu-item">
+                    <span class="home-menu-icon">🏷️</span>
+                    Gestão de Categoria
+                </button>
+                <button id="btnGoToBank_fromMenu" class="home-menu-item">
+                    <span class="home-menu-icon">🏦</span>
+                    Gestão de Banco
+                </button>
+                <button id="btnGoToReports_fromMenu" class="home-menu-item">
+                    <span class="home-menu-icon">📊</span>
+                    Relatórios
+                </button>
+                <button id="btnLogout" class="home-menu-item danger">
+                    <span class="home-menu-icon">🚪</span>
+                    Sair
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenUser" class="screen">
+        <div class="crud-card">
+            <h2>Meu Perfil</h2>
+            <div class="content">
+                 <div class="form-section is-visible"> 
+                    <form id="userForm">
+                        <div>
+                            <label for="profileName">Nome de Usuário *</label>
+                            <input type="text" id="profileName" required disabled>
+                        </div>
+                        <div>
+                            <label for="profileEmail">E-mail</label>
+                            <input type="email" id="profileEmail" placeholder="Ex: julia@gmail.com">
+                        </div>
+                        <div>
+                            <label for="profilePhone">Telefone</label>
+                            <input type="tel" id="profilePhone" placeholder="Ex: (XX) XXXXX-XXXX" required>
+                        </div>
+                        <div>
+                            <label for="profileBirthdate">Data de Nascimento</label>
+                            <input type="date" id="profileBirthdate" required>
+                        </div>
+                        <div>
+                            <label for="profilePassword">Nova Senha</label>
+                            <input type="password" id="profilePassword" placeholder="Digite uma nova senha">
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Atualizar Perfil</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="nav-button-group nav-left">
+                <button id="btnGoToMenu_fromUser" class="btn-nav">&larr; Voltar ao Menu</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenCategory" class="screen">
+        <div class="crud-card">
+            <h2>Gestão de Categoria</h2>
+            <div class="content">
+                <div class="form-section">
+                    <form id="categoryForm">
+                        <input type="hidden" id="categoryId">
+                        <div>
+                            <label>Ícone (Opcional)</label>
+                            <input type="hidden" id="categoryIcon">
+                            <div class="icon-picker" id="iconPicker"></div>
+                        </div>
+                        <div>
+                            <label for="categoryName">Nome da Categoria (*)</label>
+                            <input type="text" id="categoryName" placeholder="Ex: Alimentação" required>
+                        </div>
+                        <div>
+                            <label for="categoryType">Tipo (*)</label>
+                            <select id="categoryType" required>
+                                <option value="">Selecione...</option>
+                                <option value="Receita">Receita</option>
+                                <option value="Despesa">Despesa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="categoryDesc">Descrição</label>
+                            <input type="text" id="categoryDesc" placeholder="Ex: Contas fixas do mês">
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Salvar</button>
+                            <button type="button" class="clear" id="clearCategoryFormBtn">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Categorias Cadastradas</h3>
+                        <div class="table-header-buttons">
+                            <button id="btnToggleCategoryFilter" class="btn-icon" title="Filtrar">📊</button>
+                            <button id="btnAddNewCategory" class="btn-add">+ Adicionar Nova</button>
+                        </div>
+                    </div>
+    
+                    <form id="categoryFilterForm" class="filter-container">
+                        <div>
+                            <label for="filterCategoryName">Nome da Categoria</label>
+                            <input type="text" id="filterCategoryName" placeholder="Pesquisar por nome...">
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Filtrar</button>
+                            <button type="button" class="clear" id="clearCategoryFilterBtn">Limpar</button>
+                        </div>
+                    </form>
+    
+                    <table id="categoryTable">
+                        <thead>
+                            <tr>
+                                <th>Ícone</th>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoryTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="nav-button-group nav-left">
+                <button id="btnGoToMenu_fromCategory" class="btn-nav">&larr; Voltar ao Menu</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenBank" class="screen">
+        <div class="crud-card">
+            <h2>Gestão de Banco</h2>
+            <div class="content">
+                <div class="form-section">
+                    <form id="bankForm">
+                        <input type="hidden" id="bankId">
+                        <div>
+                            <label for="bankName">Nome do banco (*)</label>
+                            <input type="text" id="bankName" placeholder="Ex: Banco Inter" required>
+                        </div>
+                        <div>
+                            <label for="accountNumber">Número da conta (*)</label>
+                            <input type="text" id="accountNumber" placeholder="Ex: 123456-7" required>
+                        </div>
+                        <div>
+                            <label for="accountType">Tipo de conta (*)</label>
+                            <select id="accountType" required>
+                                <option value="">Selecione...</option>
+                                <option value="corrente">Corrente</option>
+                                <option value="poupanca">Poupança</option>
+                                <option value="digital">Digital</option>
+                            </select>
+                        </div>
+                        <div id="bankCreateOnlyFields">
+                            <div>
+                                <label for="initialBalanceDate">Data do Saldo Inicial (*)</label>
+                                <input type="date" id="initialBalanceDate" required>
+                            </div>
+                            <div>
+                                <label for="initialBalance">Saldo inicial (*)</label>
+                                <input type="number" id="initialBalance" placeholder="0.00" step="0.01" value="0.00" required>
+                            </div>
+                            <div>
+                                <label for="bankInitialCategory">Categoria para Saldo Inicial (Opcional)</label>
+                                <select id="bankInitialCategory">
+                                    <option value="">Nenhuma...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Salvar</button>
+                            <button type="button" class="clear" id="clearBankFormBtn">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Bancos Cadastrados</h3>
+                        <div class="table-header-buttons">
+                            <button id="btnToggleBankFilter" class="btn-icon" title="Filtrar">📊</button>
+                            <button id="btnAddNewBank" class="btn-add">+ Adicionar Novo</button>
+                        </div>
+                    </div>
+    
+                    <form id="bankFilterForm" class="filter-container">
+                        <div>
+                            <label for="filterBankName">Nome do Banco</label>
+                            <input type="text" id="filterBankName" placeholder="Pesquisar por nome...">
+                        </div>
+                        <div>
+                            <label for="filterAccountNumber">Número da Conta</label>
+                            <input type="text" id="filterAccountNumber" placeholder="Pesquisar por conta...">
+                        </div>
+                        <div>
+                            <label for="filterAccountType">Tipo de Conta</label>
+                            <select id="filterAccountType">
+                                <option value="">Todos os tipos</option>
+                                <option value="corrente">Corrente</option>
+                                <option value="poupanca">Poupança</option>
+                                <option value="digital">Digital</option>
+                            </select>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Filtrar</button>
+                            <button type="button" class="clear" id="clearBankFilterBtn">Limpar</button>
+                        </div>
+                    </form>
+    
+                    <table id="bankTable">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Conta</th>
+                                <th>Tipo</th>
+                                <th>Saldo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bankTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="nav-button-group nav-left">
+                <button id="btnGoToMenu_fromBank" class="btn-nav">&larr; Voltar ao Menu</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenIncome" class="screen">
+        <div class="crud-card">
+            <h2>Gestão de Receita</h2>
+            <div class="content">
+                <div class="form-section">
+                    <form id="incomeForm">
+                        <input type="hidden" id="incomeId">
+                        <div>
+                            <label for="incomeDate">Data (*)</label>
+                            <input type="date" id="incomeDate" required>
+                        </div>
+                        <div>
+                            <label for="incomeCategory">Categoria (*)</label>
+                            <select id="incomeCategory" required>
+                                <option value="">Selecione uma categoria...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="incomeBank">Banco (*)</label>
+                            <select id="incomeBank" required>
+                                <option value="">Selecione um banco...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="incomeDesc">Descrição</label>
+                            <input type="text" id="incomeDesc" placeholder="Ex: Salário do mês">
+                        </div>
+                        <div>
+                            <label for="incomeValue">Valor (*)</label>
+                            <input type="number" id="incomeValue" placeholder="0.00" step="0.01" required>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Salvar</button>
+                            <button type="button" class="clear" id="clearIncomeFormBtn">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Receitas Cadastradas</h3>
+                        <div class="table-header-buttons">
+                            <button id="btnToggleIncomeFilter" class="btn-icon" title="Filtrar">📊</button>
+                            <button id="btnAddNewIncome" class="btn-add">+ Adicionar Nova</button>
+                        </div>
+                    </div>
+    
+                    <form id="incomeFilterForm" class="filter-container">
+                        <div>
+                            <label for="filterIncomeStartDate">Data Inicial</label>
+                            <input type="date" id="filterIncomeStartDate">
+                        </div>
+                        <div>
+                            <label for="filterIncomeEndDate">Data Final</label>
+                            <input type="date" id="filterIncomeEndDate">
+                        </div>
+                        <div>
+                            <label for="filterIncomeCategory">Categoria</label>
+                            <select id="filterIncomeCategory">
+                                <option value="">Todas as Categorias</option>
+                            </select>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Filtrar</button>
+                            <button type="button" class="clear" id="clearIncomeFilterBtn">Limpar</button>
+                        </div>
+                    </form>
+    
+                    <table id="incomeTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Banco</th>
+                                <th>Valor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="incomeTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="nav-button-group nav-left">
+                <button id="btnGoToHome_fromIncome" class="btn-nav">&larr; Voltar ao Início</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="screenExpense" class="screen">
+        <div class="crud-card">
+            <h2>Gestão de Despesa</h2>
+            <div class="content">
+                <div class="form-section">
+                    <form id="expenseForm">
+                        <input type="hidden" id="expenseId">
+                        <div>
+                            <label for="expenseDate">Data (*)</label>
+                            <input type="date" id="expenseDate" required>
+                        </div>
+                        <div>
+                            <label for="expenseCategory">Categoria (*)</label>
+                            <select id="expenseCategory" required>
+                                <option value="">Selecione uma categoria...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="expenseBank">Banco (*)</label>
+                            <select id="expenseBank" required>
+                                <option value="">Selecione um banco...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="expenseDesc">Descrição</label>
+                            <input type="text" id="expenseDesc" placeholder="Ex: Conta de luz">
+                        </div>
+                        <div>
+                            <label for="expenseValue">Valor (*)</label>
+                            <input type="number" id="expenseValue" placeholder="0.00" step="0.01" required>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Salvar</button>
+                            <button type="button" class="clear" id="clearExpenseFormBtn">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Despesas Cadastradas</h3>
+                        <div class="table-header-buttons">
+                            <button id="btnToggleExpenseFilter" class="btn-icon" title="Filtrar">📊</button>
+                            <button id="btnAddNewExpense" class="btn-add">+ Adicionar Nova</button>
+                        </div>
+                    </div>
+    
+                    <form id="expenseFilterForm" class="filter-container">
+                        <div>
+                            <label for="filterExpenseStartDate">Data Inicial</label>
+                            <input type="date" id="filterExpenseStartDate">
+                        </div>
+                        <div>
+                            <label for="filterExpenseEndDate">Data Final</label>
+                            <input type="date" id="filterExpenseEndDate">
+                        </div>
+                        <div>
+                            <label for="filterExpenseCategory">Categoria</label>
+                            <select id="filterExpenseCategory">
+                                <option value="">Todas as Categorias</option>
+                            </select>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save">Filtrar</button>
+                            <button type="button" class="clear" id="clearExpenseFilterBtn">Limpar</button>
+                        </div>
+                    </form>
+    
+                    <table id="expenseTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Banco</th>
+                                <th>Valor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expenseTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="nav-button-group nav-left">
+                <button id="btnGoToHome_fromExpense" class="btn-nav">&larr; Voltar ao Início</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Extrato da Categoria</h2>
+                <button id="btnCloseModal" class="close-button">&times;</button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                </div>
+        </div>
+    </div>
+    
+    <nav id="bottomNav">
+        <button id="btnGoToHome" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            Início
+        </button>
+        <button id="btnGoToIncome_fromNav" class="nav-item">
+            <span class="nav-icon">➡️💰</span>
+            Receita
+        </button>
+        <button id="btnGoToExpense_fromNav" class="nav-item">
+            <span class="nav-icon">⬅️💸</span>
+            Despesa
+        </button>
+        <button id="btnGoToMenu_fromNav" class="nav-item">
+            <span class="nav-icon">☰</span>
+            Menu
+        </button>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>
